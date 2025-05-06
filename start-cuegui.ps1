@@ -5,7 +5,7 @@ param (
     [string]$CuebotHostname = "opencue-cuebot",
     [string]$CuebotPort = "8443",
     [string]$GuiName = "opencue-gui",
-    [string]$Network = "cuebot-server_opencue-network",
+    [string]$Network = "cuebot_opencue-network",
     [switch]$Build,
     [switch]$Headless,
     [switch]$Help
@@ -21,7 +21,7 @@ if ($Help) {
     Write-Host "                     - For different machines: use the actual IP address or hostname"
     Write-Host "  -CuebotPort        The port to connect to on the Cuebot server (default: 8443)"
     Write-Host "  -GuiName           The name to give to the GUI container (default: opencue-gui)"
-    Write-Host "  -Network           Docker network to connect to (default: cuebot-server_opencue-network)"
+    Write-Host "  -Network           Docker network to connect to (default: cuebot_opencue-network)"
     Write-Host "  -Build             Build the Docker image locally instead of using pre-built"
     Write-Host "  -Headless          Run in headless mode (no GUI, use 'docker exec' to launch GUI later)"
     Write-Host "  -Help              Display this help message"
@@ -143,7 +143,7 @@ else {
     # Get the IP of the host machine for X11 display
     $hostIp = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias Ethernet*,WiFi*,Ethernet,Wi-Fi | Where-Object { $_.IPAddress -notmatch '127\.0\.0\.1' -and $_.IPAddress -notmatch '169\.254\.' } | Select-Object -First 1).IPAddress
     if (-not $hostIp) {
-        $hostIp = "127.0.0.1"
+        $hostIp = "host.docker.internal"
     }
     
     # Run the GUI container

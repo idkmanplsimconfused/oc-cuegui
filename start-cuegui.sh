@@ -5,7 +5,7 @@
 CUEBOT_HOSTNAME="opencue-cuebot"
 CUEBOT_PORT="8443"
 GUI_NAME="opencue-gui"
-NETWORK="cuebot-server_opencue-network"
+NETWORK="cuebot_opencue-network"
 BUILD=false
 HEADLESS=false
 
@@ -45,7 +45,7 @@ while [[ $# -gt 0 ]]; do
       echo "                                     - For different machines: use the actual IP address or hostname"
       echo "  -p, --cuebot-port <port>          The port to connect to on the Cuebot server (default: 8443)"
       echo "  -g, --gui-name <name>             The name to give to the GUI container (default: opencue-gui)"
-      echo "  -n, --network <network>           Docker network to connect to (default: cuebot-server_opencue-network)"
+      echo "  -n, --network <network>           Docker network to connect to (default: cuebot_opencue-network)"
       echo "  -b, --build                       Build the Docker image locally instead of using pre-built"
       echo "  -l, --headless                    Run in headless mode (no GUI, use 'docker exec' to launch GUI later)"
       echo "  -h, --help                        Display this help message"
